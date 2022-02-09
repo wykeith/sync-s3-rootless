@@ -13,8 +13,8 @@ ENV AWSCLI_VERSION='1.18.14'
 
 RUN pip install --quiet --no-cache-dir awscli==${AWSCLI_VERSION}
 
-USER github
-WORKDIR /home/github
+ADD entrypoint.sh /entrypoint.sh
 
-ADD entrypoint.sh .
+RUN mkdir /github && chmod 777 /github 
+
 ENTRYPOINT ["/entrypoint.sh"]
