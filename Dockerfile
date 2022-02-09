@@ -15,6 +15,6 @@ RUN pip install --quiet --no-cache-dir awscli==${AWSCLI_VERSION}
 
 ADD entrypoint.sh /entrypoint.sh
 
-RUN mkdir /github && chmod 777 /github 
+RUN mkdir /github && chmod 777 /github && chmod 777 /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
