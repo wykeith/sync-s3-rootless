@@ -13,9 +13,10 @@ ENV AWSCLI_VERSION='1.18.14'
 
 RUN pip install --quiet --no-cache-dir awscli==${AWSCLI_VERSION}
 
-ADD entrypoint.sh /entrypoint.sh
+ADD --chmod=0777 entrypoint.sh /entrypoint.sh
 
 # Required default workdir when github runners starts a container on a locked down GSIB vm
 RUN mkdir /github && chmod 777 /github && chmod 777 /entrypoint.sh
+WORKDIR /github
 
 ENTRYPOINT ["/entrypoint.sh"]
