@@ -2,7 +2,9 @@ from __future__ import print_function
 
 import argparse
 
-import keras
+#import keras
+from tensorflow import keras
+
 from keras import backend as K
 from keras.datasets import mnist
 from keras.layers import Conv2D, MaxPooling2D
