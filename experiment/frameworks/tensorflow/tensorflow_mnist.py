@@ -113,7 +113,8 @@ for epoch in range(EPOCHS):
     ckpt.step.assign_add(1)
     if int(ckpt.step) % 1 == 0:
         save_path = manager.save()
-        task.upload_artifact(name='model_ckpt', artifact_object=save_path)
+        model.save('/tmp/model')
+        task.upload_artifact(name=f'model_ckpt_{ckpt.step}', artifact_object='/tmp/model/')
         print("Saved checkpoint for step {}: {}".format(int(ckpt.step), save_path))
 
     for test_images, test_labels in test_ds:
