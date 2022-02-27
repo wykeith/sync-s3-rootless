@@ -11,6 +11,9 @@ from keras.layers import Conv2D, MaxPooling2D
 from keras.layers import Dense, Dropout, Flatten
 from keras.models import Sequential
 
+from clearml import Task
+task = Task.init(project_name='examples', task_name='TensorFlow v2 MNIST with summaries')
+
 parser = argparse.ArgumentParser(description='Keras mnist example')
 parser.add_argument('--batch_size', type=int, default=128,
                     help='Batch size for training (default = %(default)s)')
@@ -69,5 +72,9 @@ model.fit(x_train, y_train,
           verbose=1,
           validation_data=(x_test, y_test))
 score = model.evaluate(x_test, y_test, verbose=0)
+
+model.save('/tmp/model')
+task.upload_artifact(name=f'model_ckpt_{ckpt.step}', artifact_object='/tmp/model/')
+
 print('Test loss:', score[0])
 print('Test accuracy:', score[1])
