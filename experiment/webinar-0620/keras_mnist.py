@@ -74,7 +74,7 @@ model.fit(x_train, y_train,
 score = model.evaluate(x_test, y_test, verbose=0)
 
 model.save('/tmp/model')
-task.upload_artifact(name=f'model_ckpt_{ckpt.step}', artifact_object='/tmp/model/')
+task.upload_artifact(name=f'model_ckpt', artifact_object='/tmp/model/')
 
 print('Test loss:', score[0])
 print('Test accuracy:', score[1])
