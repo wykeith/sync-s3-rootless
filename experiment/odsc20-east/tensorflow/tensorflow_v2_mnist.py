@@ -6,7 +6,7 @@ import tensorflow as tf
 from tensorflow.keras import Model
 from tensorflow.keras.layers import Dense, Flatten, Conv2D
 
-from trains import Task
+from clearml import Task
 
 # Connecting TRAINS
 task = Task.init(project_name='ODSC20-east', task_name='Tensorflow v2 mnist')
