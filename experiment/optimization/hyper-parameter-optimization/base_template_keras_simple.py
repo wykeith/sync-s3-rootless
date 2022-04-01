@@ -39,7 +39,7 @@ Y_train = np_utils.to_categorical(y_train, nb_classes)
 Y_test = np_utils.to_categorical(y_test, nb_classes)
 
 args = {'batch_size': 128,
-        'epochs': 6,
+        'epochs': 1000,
         'layer_1': 512,
         'layer_2': 512,
         'layer_3': 10,
